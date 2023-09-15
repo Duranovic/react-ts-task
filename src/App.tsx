@@ -18,6 +18,15 @@ function App() {
     getData().then(setData);
   }, []);
 
+  const handleDelete = async (id: string) => {
+    try {
+      // Update the state by removing the deleted item
+      setData((prevData) => prevData.filter((item: User) => item.id !== id));
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  };
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -57,7 +66,7 @@ function App() {
                   <Button variant="text" color="primary">
                     Edit
                   </Button>
-                  <Button variant="text" color="error" >
+                  <Button variant="text" color="error" onClick={() => handleDelete(row.id)}>
                     Delete
                   </Button>
                 </TableCell>
