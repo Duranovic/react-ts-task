@@ -1,4 +1,4 @@
-export const getData = async () => {
+export const getUsers = async () => {
     try {
       const response = await fetch('data.json', {
         headers: {
