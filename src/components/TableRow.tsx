@@ -1,14 +1,17 @@
 // CustomTableRow.tsx
 import { TableCell, Avatar, Button } from '@mui/material';
 import { User } from '../models/user';
+import dayjs from 'dayjs';
 
-export function TableRow(user: User, handleDelete: (id: string) => void) {
+export function TableRow(user: User, handleDelete: (email: string) => void, handleEdit: (email: string) => void) {
     return (
         <>
             <TableCell style={{ wordBreak: 'break-word' }}>
                 {user?.id}
             </TableCell>
-            <TableCell>{user?.isActive ? 'Yes' : 'No'}</TableCell>
+            <TableCell>
+                {user?.isActive ? 'True' : 'False'}
+            </TableCell>
             <TableCell><Avatar alt={user?.name} src={user?.picture} />
             </TableCell>
             <TableCell>{user?.age}</TableCell>
@@ -16,15 +19,17 @@ export function TableRow(user: User, handleDelete: (id: string) => void) {
             <TableCell>{user?.email}</TableCell>
             <TableCell>{user?.address}</TableCell>
             <TableCell>{user?.about}</TableCell>
-            <TableCell>{user?.registered.toString()}</TableCell>
             <TableCell>
-                <Button variant='text'>
+                {dayjs(new Date(user?.registered)).toString()}
+            </TableCell>
+            <TableCell>
+                <Button variant='text' onClick={() => handleEdit(user?.email)}>
                     Edit
                 </Button>
                 <Button
                     variant="text"
                     color="error"
-                    onClick={() => handleDelete(user?.id)}
+                    onClick={() => handleDelete(user?.email)}
                 >
                     Delete
                 </Button>

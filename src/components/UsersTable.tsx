@@ -11,8 +11,12 @@ export function UsersTable() {
     const state = useContext(UsersContext);
     const dispatch = useContext(UsersDispatchContext);
 
-    const handleDelete = async (id: string) => {
-        dispatch({ type: ACTIONS.DELETE_USER, payload: id });
+    const handleDelete = async (email: string) => {
+        dispatch({ type: ACTIONS.DELETE_USER, payload: email });
+    };
+
+    const handleEdit = async (email: string) => {
+        dispatch({ type: ACTIONS.SELECT_USER, payload: email });
     };
 
     const VirtuosoTableComponents: TableComponents<User> = {
@@ -28,7 +32,7 @@ export function UsersTable() {
                 components={VirtuosoTableComponents}
                 fixedHeaderContent={TableHeader}
                 itemContent={(_, user) => {
-                    return TableRow(user, handleDelete);
+                    return TableRow(user, handleDelete, handleEdit);
                 }}
             />
         </Paper>

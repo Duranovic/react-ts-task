@@ -15,30 +15,38 @@ export function usersReducer(state: State, action: Action) {
             return {
                 ...state,
                 users: action.payload,
-                error: null,
+                error: undefined,
             };
 
         case ACTIONS.DELETE_USER:
             return {
                 ...state,
-                users: state.users.filter((user: User) => user.id !== action.payload),
-                selectedUser: null,
-                error: null,
+                users: state.users.filter((user: User) => user.email !== action.payload),
+                selectedUser: undefined,
+                error: undefined,
             };
+
+        case ACTIONS.SELECT_USER:
+            return {
+                ...state,
+                selectedUser: state.users.find((user?: User) => user?.email === action.payload),
+                error: undefined,
+            };
+
         case ACTIONS.UPDATE_USER:
             return {
                 ...state,
                 users: state.users.map((user: User) => {
-                    return user.id === action.payload.id ? action.payload : user;
+                    return user.email === action.payload.email ? action.payload : user;
                 }),
-                selectedUser: null,
-                error: null,
+                selectedUser: undefined,
+                error: undefined,
             };
         case ACTIONS.SUCCESS:
             return {
                 ...state,
                 users: action.payload,
-                error: null,
+                error: undefined,
             };
         case ACTIONS.ERROR:
             return {

@@ -2,12 +2,12 @@ import { User } from "../../models/user";
 
 export const initialState: State = {
     users: [],
-    selectedUser: null,
-    error: null,
+    selectedUser: undefined,
+    error: undefined,
 }
 
 export type State = {
-    users: User[],
-    selectedUser: User | null,
-    error: string | null,
+    users: User[];
+    selectedUser?: User;
+    error?: string;
 };
