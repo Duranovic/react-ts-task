@@ -34,7 +34,7 @@ These instructions will help you set up and run the project on your local machin
    ```bash
    npm install
 
-## development
+## Development
 If you want to contribute to this project or customize it for your needs, follow these steps to set up the development environment.
 
 1. Clone the repository (if you haven't already):
