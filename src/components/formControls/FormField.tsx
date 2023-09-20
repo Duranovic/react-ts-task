@@ -5,7 +5,7 @@ import { DatePickerControl } from "./DatePickerControl";
 export function FormField(props: any) { //{ type, name, label, value, onChange }
     switch (props.type) {
         case 'text' || 'email' || 'password' || 'number':
-            return <TextField variant="standard" {...props} />
+            return <TextField {...props} />
         case 'date':
             return <DatePickerControl {...props}/>
         case 'boolean':

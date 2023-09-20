@@ -45,7 +45,7 @@ export function EditUserDialog() {
                     {keys.map((key) => {
                         const typeKey = key as keyof User;
                         return (
-                            <FormField key={key} style={{ flex: '1' }} type={UserPropsTypes[typeKey]} id={key} name={key} label={key} variant="standard" value={formDataWithKeys?.[key] ?? ''} onChange={handleChange} />
+                            <FormField key={key} type={UserPropsTypes[typeKey]} name={key} label={key} variant="standard" value={formDataWithKeys?.[key] ?? ''} onChange={handleChange} disabled={(key == 'id' && !!state?.selectedUser?.[key])} />
                         )
                     })}
                 </form>
