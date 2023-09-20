@@ -1,6 +1,17 @@
+// React imports
+import { ReactElement } from "react";
+// Material UI imports
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+// Types imports
+import { FormControlProps } from "../types/propTypes";
 
-export function RadioControl({ label, name, value, onChange }: any) {
+/**
+ * Renders a radio button control for selecting a boolean value (Yes or No).
+ *
+ * @param {FormControlProps} props - Component props for the radio control.
+ * @returns {ReactElement} A React element representing the radio control.
+ */
+export function RadioControl({ label, name, value, onChange }: FormControlProps): ReactElement {
     return (
         <FormControl>
             <FormLabel id="radio-buttons-group">{label}</FormLabel>

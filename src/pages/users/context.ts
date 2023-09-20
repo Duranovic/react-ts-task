@@ -1,5 +1,9 @@
-import { createContext } from "react";
-import { State } from "./state";
+// React imports
+import { Context, Dispatch, createContext } from "react";
+// State imports
+import { State, initialState } from "./state/state";
+// Types imports
+import { Action } from "../../types/action";
 
-export const UsersContext = createContext<State | null>(null);
-export const UsersDispatchContext = createContext<any>(null);
+export const UsersContext: Context<State> = createContext<State>(initialState);
+export const UsersDispatchContext: Context<Dispatch<Action>> = createContext<Dispatch<Action>>(null as unknown as Dispatch<Action>);

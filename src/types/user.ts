@@ -1,3 +1,6 @@
+/**
+ * A type that represents a user object.
+ */
 export type User = {
     id?: string;
     isActive: boolean;
@@ -10,6 +13,9 @@ export type User = {
     registered: string;
   };
 
+  /**
+   * A constant that maps user props to form controls.
+   */
   export const UserPropsTypes = {
     id: 'text',
     isActive: 'boolean',
