@@ -39,7 +39,7 @@ If you want to contribute to this project or customize it for your needs, follow
 
 1. Clone the repository (if you haven't already):
    ```bash
-      git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/Duranovic/react-ts-task
 
 2. Navigate to the project directory:
    ```bash
