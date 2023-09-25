@@ -13,13 +13,11 @@ import { EditorTableCell } from './EditorTableCell';
  * @returns {ReactElement} A React element representing the item table row.
  */
 export function TableRow(item: any, handleDelete: (item: any) => void, handleEdit: (item: any) => void): ReactElement {
-    // Extract keys from formData or provide an empty object if formData is undefined
-    const keys = Object.keys(item);
-    const userDataWithKeys: { [key: string]: any } = item as { [key: string]: any };
+    const keys = Object.keys(item ?? {});
 
     return (<>
         {keys.map((key: string) => {
-            return <EditorTableCell key={key} type={key} value={userDataWithKeys[key]} />
+            return <EditorTableCell key={key} type={key} value={item[key]} />
         })}
         <TableCell>
             <Button variant='text' onClick={() => handleEdit(item)}>

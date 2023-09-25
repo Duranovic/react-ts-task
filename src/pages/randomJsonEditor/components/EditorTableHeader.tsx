@@ -4,14 +4,13 @@ import { ReactElement } from 'react';
 import { TableRow, TableCell } from '@mui/material';
 
 /**
- * Renders a table header row with column headers for user data and an "Actions" column.
+ * Renders a table header row with column headers for item data and an "Actions" column.
  *
  * @returns {ReactElement} A React element representing the table header row.
  */
-export function TableHeader(): ReactElement {
+export function TableHeader(props: any): ReactElement {
   // Extract keys from formData or provide an empty object if formData is undefined
-  const keys = Object.keys({});
-
+  const keys = Object.keys(props?.item ?? {});
   return (
     <TableRow>
       {keys.map((key: string) => (

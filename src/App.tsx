@@ -4,12 +4,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 // Custom CSS imports
 import './App.css'
 // Pages imports
-import Users from './pages/users/Users';
+import RandomJsonEditor from './pages/randomJsonEditor/RandomJsonEditor';
 
 function App() {
   return (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <Users />
+    {/* <Users /> */}
+    <RandomJsonEditor />
   </LocalizationProvider>);
 }
 

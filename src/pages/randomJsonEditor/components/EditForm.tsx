@@ -30,7 +30,7 @@ export function EditForm(): ReactElement {
         if (state?.submitForm)
             handleSubmit();
 
-        if(state?.selected)
+        if (state?.selected)
             setFormData(state?.selected);
     }, [state?.selected, state?.submitForm]);
 
@@ -50,7 +50,11 @@ export function EditForm(): ReactElement {
     * @param event - The form submission event.
     */
     function handleSubmit(): void {
-        dispatch!({ type: ACTIONS.UPDATE, payload: formData });
+        // Dispatch the update action and reset the form
+        dispatch!({ type: ACTIONS.UPDATE, payload: {
+            originalItem: state?.selected,
+            updatedItem: formData,
+        }});
         dispatch!({ type: ACTIONS.SUBMIT, payload: false });
     };
 

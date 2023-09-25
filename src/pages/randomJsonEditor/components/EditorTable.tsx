@@ -7,16 +7,14 @@ import { Paper, Table } from "@mui/material";
 import { EditorContext, EditorDispatchContext } from "../context";
 // State imports
 import { ACTIONS } from "../state/actions";
-// Types imports
-import { User } from "../../../types/user";
 // Component imports
 import { TableHeader } from "./EditorTableHeader";
 import { TableRow } from "./EditorTableRow";
 
 /**
- * Renders a table of users, providing options to delete or edit user entries.
+ * Renders a table of data items, providing options to delete or edit data entries.
  *
- * @returns {ReactElement} A React element representing the UsersTable.
+ * @returns {ReactElement} A React element representing the EditorTable.
  */
 export function EditorTable(): ReactElement {
     // Get the state and dispatch function from context
@@ -55,7 +53,7 @@ export function EditorTable(): ReactElement {
             <TableVirtuoso
                 data={state?.data}
                 components={VirtuosoTableComponents}
-                fixedHeaderContent={TableHeader}
+                fixedHeaderContent={() => <TableHeader item={state?.data[0]} />}
                 itemContent={(_, item) => {
                     return TableRow(item, handleDelete, handleEdit);
                 }}

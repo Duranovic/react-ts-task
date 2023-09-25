@@ -1,5 +1,6 @@
 // Action imports
 import { Action } from "../../../types/action";
+import { findItemByObject } from "../../../utils/arrayHelper";
 import { ACTIONS } from "./actions";
 // State imports
 import { State } from "./state";
@@ -44,16 +45,9 @@ export function editorReducer(state: State, action: Action) {
         case ACTIONS.SELECT:
             return {
                 ...state,
-                selected: state.data.find((item?: any) => {
-                    if (action.payload.id !== undefined && item?.id === action.payload.id) {
-                        // If action.payload.id is defined and matches the item's id, return this item.
-                        return true;
-                    } else if (item?.email === action.payload.email) {
-                        // If either action.payload.id is not defined or there was no id match, check if email matches and return this item.
-                        return true;
-                    } else {
-                        // If neither id nor email matches, continue searching for a matching item.
-                        return false;
+                selected: state.data.find((item: any) => {
+                    if(JSON.stringify(item) === JSON.stringify(action.payload)) {
+                        return item;
                     }
                 }),
                 error: undefined,
@@ -63,16 +57,12 @@ export function editorReducer(state: State, action: Action) {
             return {
                 ...state,
                 data: state.data.map((item: any) => {
-                    if (action.payload.id !== undefined && item.id === action.payload.id) {
-                        // If action.payload.id is defined and matches the item's id, update the item.
-                        return action.payload;
-                    } else if (item.email === action.payload.email) {
-                        // If action.payload.id is not defined or there is no id match, check if email matches and update the item.
-                        return action.payload;
-                    } else {
-                        // If neither id nor email matches, keep the original item.
-                        return item;
+                    // If matches, return the updated item
+                    if(JSON.stringify(item) === JSON.stringify(action.payload.originalItem)) {
+                        return action.payload.updatedItem;
                     }
+                    // If doesn't match, return the item
+                    return item;
                 }),
                 selected: undefined,
                 error: undefined,
@@ -83,6 +73,7 @@ export function editorReducer(state: State, action: Action) {
                 ...state,
                 submitForm: action.payload,
             };
+
         case ACTIONS.SUCCESS:
             return {
                 ...state,

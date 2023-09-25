@@ -30,6 +30,7 @@ export function EditDialog(): ReactElement {
      * Closes the user editing dialog and resets the selectedUser in the context.
      */
     function handleClose(): void {
+        dispatch!({ type: ACTIONS.SELECT, payload: null});
         setIsOpen(false);
     };
 

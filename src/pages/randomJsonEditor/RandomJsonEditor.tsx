@@ -3,7 +3,7 @@ import { useEffect, useReducer } from "react";
 // Context imports
 import { EditorContext, EditorDispatchContext } from "./context";
 // Service imports
-import { getData } from "../../services/dataService";
+import { getData, getDataFromUrl } from "../../services/dataService";
 // Component imports
 import { EditorTable } from "./components/EditorTable";
 import { EditDialog } from "./components/EditDialog";
@@ -24,6 +24,7 @@ export default function RandomJsonEditor(): React.ReactElement {
   useEffect(() => {
     dispatch({ type: ACTIONS.FETCH_DATA, payload: null });
 
+    // or getDataFromUrl()
     getData().then((data) => {
       // Dispatch an action to update the state with the fetched data.
       dispatch({ type: ACTIONS.SUCCESS, payload: data });
