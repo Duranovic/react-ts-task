@@ -21,3 +21,25 @@ export const getUsers = async (): Promise<Array<User>> => {
     return [];
   }
 };
+
+
+/**
+ * Asynchronously fetches a list of data from the `data.json` file.
+ *
+ * @returns A Promise that resolves to an array of `any` objects, or an empty array if there is an error.
+ */
+
+export const getData = async (): Promise<Array<any>> => {
+  try {
+    const response = await fetch('data.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};

@@ -7,6 +7,14 @@ export type UserTableCellProps = {
 }
 
 /**
+ * A type that represents a props object for UserTableCell.
+ */
+export type EditorTableCellProps = {
+    type: string;
+    value: string;
+}
+
+/**
  * A type that represents a props object for FormControls.
  */
 export type FormControlProps = {
