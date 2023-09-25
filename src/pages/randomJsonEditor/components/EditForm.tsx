@@ -69,7 +69,7 @@ export function EditForm(): ReactElement {
                         label={key}
                         value={formDataWithKeys?.[key] ?? ''}
                         onChange={handleChange}
-                        disabled={key === 'id' && !!state?.selected?.[key]}
+                        disabled={key.toLowerCase() === 'id' && !!state?.selected?.[key]}
                     />
                 );
             })}
