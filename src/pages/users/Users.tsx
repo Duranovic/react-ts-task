@@ -3,7 +3,7 @@ import { useEffect, useReducer } from "react";
 // Context imports
 import { UsersContext, UsersDispatchContext } from "./context";
 // Service imports
-import { getUsers } from "../../services/userService";
+import { getUsers } from "../../services/dataService";
 // Component imports
 import { UsersTable } from "./components/UserTable";
 import { EditUserDialog } from "./components/EditUserDialog";
